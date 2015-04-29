@@ -1,0 +1,59 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Day 1</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+        #bubblegum {
+            border-radius: 100%;
+            width: 10px;
+            height: 10px;
+            background: rgba(242, 143, 179, 1);
+            margin: 0 auto;
+            transition: all .1s ease-in-out;
+        }
+        #boom {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('day1.gif');
+            background-size: cover;
+        }
+        </style>
+
+    </head>
+    <body>
+        <div id="boom"></div>
+        <div id="bubblegum"></div>
+
+        <script>
+        var size = 10;
+        var opacity = 1;
+        var bubble = document.querySelector('#bubblegum');
+        var explosion = document.querySelector("#boom");
+
+        function grow() {
+            if (size > 500) {
+                bubble.parentNode.removeChild(bubble);
+                explosion.style.display = "block";
+            } 
+            else {
+                console.log(size);
+                size = size * 2;
+                opacity = opacity - 0.15;
+                bubble.style.backgroundColor = "rgba(242, 143, 179," + opacity + ")";
+                bubble.style.height = size + "px";
+                bubble.style.width = size + "px";
+                return [size, opacity];
+            }
+        };
+
+        document.getElementById('bubblegum').addEventListener('click',grow,false);
+        explosion.style.display = "none";
+        </script>
+
+    </body>
+</html>
